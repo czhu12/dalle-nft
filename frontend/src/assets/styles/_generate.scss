@@ -1,0 +1,46 @@
+.ai-generate {
+  .big-quotes img {
+    width: 40px;
+  }
+  .end-quotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+  textarea {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-style:italic;
+    font-size: 2em;
+  }
+  background-color: #191c24;
+  font-size: 1em;
+  button {
+    font-size: 1em;
+  }
+
+  .main-image {
+    border-radius: 5px;
+    transition: transform .4s; /* Animation */
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .form-control {
+    font-size: 1em;
+  }
+  .form-control::placeholder {
+    font-size: 1em;
+  }
+
+  .top-bottom-nav {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
