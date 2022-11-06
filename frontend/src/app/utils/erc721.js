@@ -1,3 +1,21 @@
+import axios from 'axios';
+import { currentChainName, friendlyChainName } from './blockchain';
+const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_KEY;
+const alchemyPolygonKey = process.env.NEXT_PUBLIC_ALCHEMY_POLYGON_KEY;
+const alchemyRinkebyKey = process.env.NEXT_PUBLIC_ALCHEMY_RINKEBY_KEY;
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+const contractABI = require("../contract_definitions/erc721.json");
+
+
+export const createWeb3ForChain = (chain) => {
+  if (chain === 'polygon') {
+    return createAlchemyWeb3(alchemyPolygonKey);
+  } else if (chain === 'rinkeby') {
+    return createAlchemyWeb3(alchemyRinkebyKey);
+  } else {
+    return createAlchemyWeb3(alchemyKey);
+  }
+}
 export class ERC721Contract {
   constructor(contractAddress, chain='eth') {
     this.contractAddress = contractAddress;
