@@ -44,6 +44,7 @@
     max-width: 400px;
     width: 75%;
     height: auto;
+    aspect-ratio : 1 / 1;
     transition: transform .4s; /* Animation */
 
     &:hover {

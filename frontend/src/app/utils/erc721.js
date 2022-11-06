@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { currentChainName, friendlyChainName } from './blockchain';
 const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_KEY;
 const alchemyPolygonKey = process.env.NEXT_PUBLIC_ALCHEMY_POLYGON_KEY;
