@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Form, InputGroup, Image, Row, Col } from 'react-bootstrap';
+import { Button, Container, Image, Row, Col } from 'react-bootstrap';
 import { buildRoute } from '../src/app/auth/client/routes';
-
+import DeployContract from "../src/app/ai/components/DeployContract";
 
 const theme = "danger";
 const generateRandomPrompt = () => {
@@ -14,6 +14,8 @@ const generateRandomPrompt = () => {
     "dinosaurs playing baseball in watercolor style",
     "acrylic on canvas portrait of the Bride of Frankenstein",
     "an airbrush caricature of an old man",
+    "monumental old ruins tower of a dark misty forest, overcast, sci-fi digital painting by simon stalenhag",
+    "the cutest little polymer clay totoro and pikachu hybrid",
   ]
   const index = Math.floor(Math.random() * choices.length);
   return choices[index];
@@ -24,24 +26,24 @@ const Generate = ({}) => {
   const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState(generateRandomPrompt());
   const [generationPrompt, setGenerationPrompt] = useState(null);
+  /*
   const fetchGenerationPrompt = async () => {
     const response = await axios.get(buildRoute(`/ai_generation/generations/${1}`))
     setGenerationPrompt(response.data);
   }
+  */
   useEffect(() => {
     document.getElementById('textarea')?.focus();
   }, [])
 
   const createGenerationPrompt = async () => {
     setLoading(true);
-    /*
     const response = await axios.post(
       buildRoute('/ai_generation/generations'),
       { prompt: prompt },
     );
     setGenerationPrompt(response.data);
-    */
-    await fetchGenerationPrompt();
+    //await fetchGenerationPrompt();
     setCurrentStep(1);
     setLoading(false);
   }
@@ -54,7 +56,7 @@ const Generate = ({}) => {
             <div>
               <div className="text-center">
                 <div className="mt-5 mb-2 display-2">
-                  A new thing
+                  DALL-E.NFT
                 </div>
 
                 <div className="mb-5 display-5">
@@ -79,7 +81,7 @@ const Generate = ({}) => {
                 </Row>
               </div>
               <div className="text-right mt-xs-4">
-                <i className={`mdi mdi-refresh text-${theme} display-2 pointer`} onClick={() => {
+                <i className={`mdi mdi-refresh text-muted display-4 pointer`} onClick={() => {
                   setPrompt(generateRandomPrompt());
                 }}></i>
               </div>
@@ -129,39 +131,7 @@ const Generate = ({}) => {
           </div>
         )}
         {currentStep === 2 && (
-          <div className="top-bottom-nav text-center">
-            <div>
-              <div className="my-4">
-                <Image className="main-image small-image" src={generationPrompt?.generation_image.source_url} />
-              </div>
-              <Row className="justify-content-center">
-                <Col xs="auto">
-                  <img className="quote-image small-quote" src="/images/quotes-start.png"/>
-                </Col>
-                <Col xs="auto">
-                  <div className="font-italic display-6">
-                    {generationPrompt.prompt}
-                  </div>
-                </Col>
-                <Col xs="auto">
-                  <img className="quote-image small-quote" src="/images/quotes-end.png"/>
-                </Col>
-              </Row>
-            </div>
-            <div className="mb-4">
-              <Button
-                block
-                onClick={() => setCurrentStep(2)}
-                className="my-4"
-                size="lg"
-                variant={theme}
-              >Deploy Contract</Button>
-              <a href="#" onClick={(e) => {
-                e.preventDefault();
-                setCurrentStep(1);
-              }}>Go Back</a>
-            </div>
-          </div>
+          <DeployContract theme={theme} generationPrompt={generationPrompt} />
         )}
       </Container>
     </div>
