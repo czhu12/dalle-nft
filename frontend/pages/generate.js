@@ -25,21 +25,23 @@ const Generate = ({}) => {
   const [prompt, setPrompt] = useState(generateRandomPrompt());
   const [generationPrompt, setGenerationPrompt] = useState(null);
   const fetchGenerationPrompt = async () => {
-    const response = await axios.get(buildRoute(`/ai_generation/generations/${8}`))
+    const response = await axios.get(buildRoute(`/ai_generation/generations/${1}`))
     setGenerationPrompt(response.data);
   }
   useEffect(() => {
-    document.getElementById('textarea').focus();
-    fetchGenerationPrompt();
+    document.getElementById('textarea')?.focus();
   }, [])
 
   const createGenerationPrompt = async () => {
     setLoading(true);
+    /*
     const response = await axios.post(
       buildRoute('/ai_generation/generations'),
       { prompt: prompt },
     );
     setGenerationPrompt(response.data);
+    */
+    await fetchGenerationPrompt();
     setCurrentStep(1);
     setLoading(false);
   }
@@ -61,7 +63,7 @@ const Generate = ({}) => {
               </div>
               <div>
                 <Row>
-                  <Col xs="auto" className="big-quotes"><img src="/images/quotes-start.png"/></Col>
+                  <Col xs="auto"><img src="/images/quotes-start.png" className="quote-image" /></Col>
                   <Col>
                     <textarea
                       id="textarea"
@@ -73,7 +75,7 @@ const Generate = ({}) => {
                       }}
                     />
                   </Col>
-                  <Col xs="auto" className="big-quotes"><img src="/images/quotes-end.png"/></Col>
+                  <Col xs="auto" className="big-quotes"><img src="/images/quotes-end.png" className="quote-image" /></Col>
                 </Row>
               </div>
               <div className="text-right mt-xs-4">
@@ -98,19 +100,27 @@ const Generate = ({}) => {
         {currentStep === 1 && (
           <div className="top-bottom-nav text-center">
             <div>
-              <Image className="main-image" fluid src={generationPrompt?.generation_image.source_url} />
-              <div className="font-italic display-4">
-                “{generationPrompt.prompt}”
+              <div className="my-4">
+                <Image className="main-image" src={generationPrompt?.generation_image.source_url} />
+              </div>
+              <div className="text-center">
+                <img className="mb-4 quote-image" src="/images/quotes-start.png"/>
+              </div>
+              <div className="font-italic display-5">
+                {generationPrompt.prompt}
+              </div>
+              <div className="text-center">
+                <img className="mt-4 quote-image" src="/images/quotes-end.png"/>
               </div>
             </div>
             <div className="mb-4">
               <Button
                 block
-                onClick={() => setCurrentStep(1)}
+                onClick={() => setCurrentStep(2)}
                 className="my-4"
                 size="lg"
                 variant={theme}
-              >Create NFT</Button>
+              >Create 1 / 1 NFT</Button>
               <a href="#" onClick={(e) => {
                 e.preventDefault();
                 setCurrentStep(0);
@@ -119,8 +129,38 @@ const Generate = ({}) => {
           </div>
         )}
         {currentStep === 2 && (
-          <div>
-
+          <div className="top-bottom-nav text-center">
+            <div>
+              <div className="my-4">
+                <Image className="main-image small-image" src={generationPrompt?.generation_image.source_url} />
+              </div>
+              <Row className="justify-content-center">
+                <Col xs="auto">
+                  <img className="quote-image small-quote" src="/images/quotes-start.png"/>
+                </Col>
+                <Col xs="auto">
+                  <div className="font-italic display-6">
+                    {generationPrompt.prompt}
+                  </div>
+                </Col>
+                <Col xs="auto">
+                  <img className="quote-image small-quote" src="/images/quotes-end.png"/>
+                </Col>
+              </Row>
+            </div>
+            <div className="mb-4">
+              <Button
+                block
+                onClick={() => setCurrentStep(2)}
+                className="my-4"
+                size="lg"
+                variant={theme}
+              >Deploy Contract</Button>
+              <a href="#" onClick={(e) => {
+                e.preventDefault();
+                setCurrentStep(1);
+              }}>Go Back</a>
+            </div>
           </div>
         )}
       </Container>
