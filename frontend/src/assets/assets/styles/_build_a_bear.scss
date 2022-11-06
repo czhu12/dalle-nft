@@ -1,0 +1,166 @@
+div.scroll-container {
+  text-align: -webkit-center;
+}
+
+div.scroll-menu {
+  overflow: auto;
+  white-space: nowrap;
+  max-width: 75vh;
+}
+
+div.scroll-menu span {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scroll-menu span:hover {
+  color: var(--primary);
+}
+
+.scroll-filler {
+  display: inline-block;
+  width: 38%;
+}
+
+.scroll-text-last{
+  background: -webkit-linear-gradient(left, #eee 30%, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.scroll-text-first {
+  background: -webkit-linear-gradient(right, #eee 30%, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-build-a-bear {
+  margin-top: 80px;
+}
+
+.build-a-bear-wrapper.light-mode {
+  color: black !important;
+}
+
+
+.fancy-card {
+  background-image: linear-gradient(
+    319deg, #663dff25 0%, #aa00ff25 37%, #cc449925 100%);
+}
+
+.fancy-text {
+  background: linear-gradient(
+    319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.congrats {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 54px;
+  margin-left: -111px;
+  text-align: -webkit-center;
+  padding-top: 5px;
+  border-radius: 10px;
+  z-index: 99;
+  background: rgba(13,13,13,.2);
+}
+
+
+.glow_up_box {
+  position: relative;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.01);
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 15px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.9) translateZ(0);
+    filter: blur(15px);
+    background: linear-gradient(
+      to left,
+      #ff5770,
+      #e4428d,
+      #c42da8,
+      #9e16c3,
+      #6501de,
+      #9e16c3,
+      #c42da8,
+      #e4428d,
+      #ff5770
+    );
+    background-size: 200% 200%;
+    animation: animateGlow 1.25s linear infinite;
+  }
+}
+
+@keyframes animateGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.description-card {
+  background: rgb(143, 95, 232);
+  padding: 5px 15px;
+  box-sizing: border-box;
+  font-size: 11px;
+  margin: 5px 10px 5px 10px;
+  box-shadow: 0 2px 5px 1px #00000021;
+  width: auto;
+  text-align: center;
+}
+
+.pokemon-card {
+  position: relative;
+  overflow: hidden;
+  overflow: hidden;
+  z-index: 10;
+  touch-action: none;
+  border-radius: 5% / 3.5%;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  will-change: transform, filter;
+  transform-origin: center;
+  background-color: #663dff25;
+  background-blend-mode: soft-light, screen;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--gradient-deg)),
+    color-stop(0%, #ec9bb634),
+    to(#673dff0e)
+  );
+  background-image: linear-gradient(var(--gradient-deg), #673dff0e 0%, #ec9bb634 100%);
+}
+
+ul.emoji-build-a-bear-list > li:nth-child(1) {
+  list-style: "🖼️  ";
+  list-style-position: outside;
+}
+ul.emoji-build-a-bear-list > li:nth-child(2) {
+  list-style: "👀  ";
+  list-style-position: outside;
+}
+ul.emoji-build-a-bear-list > li:nth-child(3) {
+  list-style: "👼  ";
+  list-style-position: outside;
+}
+
+ul.emoji-build-a-bear-list ul li {
+  list-style-type: circle;
+}

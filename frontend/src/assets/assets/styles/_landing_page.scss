@@ -1,0 +1,23 @@
+.marketplace-preview img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.marketplace-preview {
+  background-color: rgb(25, 28, 36);
+}
+
+.card-icon-top .card-icon {
+  top: -38px;
+  left: calc(50% - 30px);
+  height: 70px;
+  width: 70px;
+  position: absolute;
+}
+.call-to-action {
+  font-size: 1.2em !important;
+  font-weight: bold;
+}

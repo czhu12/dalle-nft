@@ -1,0 +1,23 @@
+.simple-mde-container {
+  .editor-toolbar {
+      button {
+          color: $text-gray;
+      }
+  }
+
+  .CodeMirror.CodeMirror-wrap {
+    background: #2a3038;
+    color: white;
+  }
+
+  .CodeMirror-cursor {
+    border-left: 1px solid white;
+  }
+
+  .editor-preview-full.editor-preview.editor-preview-active {
+    background-color: #2a3038;
+  }
+  .side-by-side, .fullscreen {
+    display: none;
+  }
+}

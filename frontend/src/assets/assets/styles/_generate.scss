@@ -1,0 +1,71 @@
+.ai-generate {
+  ::selection {
+      background: #ffb7b7;
+      /* WebKit/Blink Browsers */
+    }
+  
+    ::-moz-selection {
+      background: #ffb7b7;
+      /* Gecko Browsers */
+    }
+  .quote-image {
+    width: 40px;
+  }
+  .small-quote {
+    width: 30px !important;
+  }
+  .end-quotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+  textarea {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-style:italic;
+    font-size: 2em;
+  }
+  @media only screen and (max-width: 600px) {
+    textarea {
+      font-size: 1.4em;
+    }
+  }
+  
+  background-color: #191c24;
+  font-size: 1em;
+  button {
+    font-size: 1em;
+  }
+
+  .main-image {
+    border-radius: 5px;
+    max-width: 400px;
+    width: 75%;
+    height: auto;
+    transition: transform .4s; /* Animation */
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  .small-image {
+    max-width: 150px !important;
+    width: 25% !important;
+  }
+
+  .form-control {
+    font-size: 1em;
+  }
+  .form-control::placeholder {
+    font-size: 1em;
+  }
+
+  .top-bottom-nav {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

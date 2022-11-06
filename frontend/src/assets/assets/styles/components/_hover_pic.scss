@@ -1,0 +1,26 @@
+/* layer styling */
+.hover-wrapper:hover .hover-board {
+  transform: rotate(-30deg) skew(30deg) scale(0.8);
+  transform-origin: 50% 50%;
+}
+
+.hover-board, .board {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+}
+
+.hover-board img, .board img {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.hover-wrapper:hover .hover-board img {
+  transition: all ease 1000ms;
+  transform: var(--transform, translate(100px, -100px));
+  width: 80%;
+  background-color: #ffffff0d;
+  border: 1px solid white;
+}
